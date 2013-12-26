@@ -27,7 +27,7 @@ vec3 get_color(int lighting, vec3 spec_refl, vec3 diff_refl, vec3 amb_refl,
    vec3 dir_to_light = normalize(lpos - pos);
    // Quadratic.
    float power =
-      max(1 - (lpos - pos) * (lpos - pos) / 2 / light_half_dist / light_half_dist, 0);
+      max(1 - dot(lpos - pos, lpos - pos) / 2 / light_half_dist / light_half_dist, 0);
    vec3 amb_int = light_color * amb_refl;
    float diff_coef = max(dot(dir_to_light, norm), 0);
    vec3 diff_int = light_color * diff_refl * diff_coef * power;
